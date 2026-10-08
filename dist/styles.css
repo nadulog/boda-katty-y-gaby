@@ -1,0 +1,17 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { background: #efe4cd; scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: #efe4cd; color: #26310e; font-family: Georgia, serif; }
+.invitation { width: min(100%, 941px); margin: 0 auto; overflow: hidden; background: #efe4cd; box-shadow: 0 0 32px rgb(76 52 18 / 18%); }
+.panel { position: relative; line-height: 0; }
+.panel img { display: block; width: 100%; height: auto; }
+.guest-name { position: absolute; inset: 32.5% 14% auto; margin: 0; min-height: 1.2em; color: #384416; font-size: clamp(1.6rem, 7vw, 3.4rem); line-height: 1.25; text-align: center; font-style: italic; text-wrap: balance; }
+.countdown { position: absolute; top: 45.5%; left: 5.3%; width: 89.4%; display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; text-align: center; color: #26310e; }
+.countdown span { display: grid; gap: clamp(4px, 1vw, 9px); }
+.countdown b { font-size: clamp(2rem, 10vw, 5.1rem); line-height: .85; font-weight: 500; letter-spacing: -.04em; text-shadow: 0 1px 0 rgb(255 248 231 / 40%); }
+.countdown small { font-size: clamp(.53rem, 2.6vw, 1.25rem); line-height: 1; text-transform: uppercase; letter-spacing: .04em; font-weight: 700; }
+.hotspot { position: absolute; display: block; border-radius: 10px; outline-offset: 5px; }
+.hotspot:focus-visible { outline: 3px solid #fff; }
+.calendar-link { left: 17%; top: 76.1%; width: 66%; height: 6.3%; }
+.location-link { left: 19%; top: 77.1%; width: 62%; height: 6.5%; }
+@media (max-width: 420px) { .invitation { box-shadow: none; } .guest-name { inset: 32.4% 12% auto; } }

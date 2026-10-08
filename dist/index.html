@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#4b561c" />
+    <meta name="description" content="Invitación de boda de Gaby y Katty — 12 de diciembre de 2026." />
+    <title>Gaby & Katty · Nuestra boda</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="invitation" aria-label="Invitación de boda de Gaby y Katty">
+      <section class="panel cover" aria-label="Portada">
+        <img src="1.webp" alt="Nuestra boda: Gaby y Katty, 12 de diciembre de 2026" />
+      </section>
+
+      <section class="panel guest-panel" aria-label="Invitación para invitados">
+        <img src="2.webp" alt="Esta invitación fue creada especialmente para nuestros invitados" />
+        <p id="guest-name" class="guest-name" aria-live="polite"></p>
+      </section>
+
+      <section class="panel countdown-panel" aria-label="Cuenta regresiva">
+        <img src="3.webp" alt="Cuenta regresiva para la boda" />
+        <div class="countdown" aria-live="polite" aria-label="Tiempo restante hasta la boda">
+          <span><b id="days">00</b><small>días</small></span>
+          <span><b id="hours">00</b><small>horas</small></span>
+          <span><b id="minutes">00</b><small>minutos</small></span>
+          <span><b id="seconds">00</b><small>segundos</small></span>
+        </div>
+      </section>
+
+      <section class="panel date-panel" aria-label="Fecha y hora">
+        <img src="4.webp" alt="Sábado 12 de diciembre de 2026, de 19:00 a 06:00 horas" />
+        <a class="hotspot calendar-link" href="boda-gaby-katty.ics" download aria-label="Agregar la boda al calendario"></a>
+      </section>
+
+      <section class="panel location-panel" aria-label="Cómo llegar">
+        <img src="5.webp" alt="Cómo llegar a Complejo La Masia" />
+        <a class="hotspot location-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complejo%20La%20Masia" target="_blank" rel="noopener" aria-label="Ver ubicación de Complejo La Masia en Google Maps"></a>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

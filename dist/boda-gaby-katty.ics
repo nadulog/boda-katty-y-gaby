@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Boda Gaby y Katty//ES
+BEGIN:VEVENT
+UID:gaby-katty-20261212@invitacion
+DTSTAMP:20261008T000000Z
+DTSTART:20261212T190000
+DTEND:20261213T060000
+SUMMARY:Boda de Gaby y Katty
+LOCATION:Complejo La Masia
+DESCRIPTION:¡Nos casamos! Te esperamos para compartir este momento especial.
+END:VEVENT
+END:VCALENDAR
