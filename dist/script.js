@@ -23,3 +23,32 @@ if (guest) document.getElementById('guest-name').textContent = guest;
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
+
+const galleryButtons = [...document.querySelectorAll('[data-gallery-index]')];
+const lightbox = document.querySelector('.lightbox');
+const lightboxImage = document.querySelector('.lightbox__image');
+let activeGalleryIndex = 0;
+
+function showGalleryImage(index) {
+  activeGalleryIndex = (index + galleryButtons.length) % galleryButtons.length;
+  const image = galleryButtons[activeGalleryIndex].querySelector('img');
+  lightboxImage.src = image.src;
+  lightboxImage.alt = image.alt;
+}
+
+galleryButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    showGalleryImage(index);
+    lightbox.showModal();
+  });
+});
+
+document.querySelector('.lightbox__close').addEventListener('click', () => lightbox.close());
+document.querySelector('.lightbox__nav--previous').addEventListener('click', () => showGalleryImage(activeGalleryIndex - 1));
+document.querySelector('.lightbox__nav--next').addEventListener('click', () => showGalleryImage(activeGalleryIndex + 1));
+lightbox.addEventListener('click', (event) => { if (event.target === lightbox) lightbox.close(); });
+document.addEventListener('keydown', (event) => {
+  if (!lightbox.open) return;
+  if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
+  if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
+});

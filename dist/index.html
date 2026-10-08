@@ -43,6 +43,29 @@
         <img src="6.webp" alt="Información adicional de la boda" />
       </section>
 
+      <section class="gallery" aria-labelledby="gallery-title">
+        <div class="gallery__heading">
+          <span>Gaby & Katty</span>
+          <h2 id="gallery-title">Nuestra historia</h2>
+          <p>Un pedacito de nosotros.</p>
+        </div>
+        <div class="gallery__grid">
+          <button class="gallery__item" type="button" data-gallery-index="0"><img src="gallery/gallery-01.webp" alt="Gaby y Katty junto a un árbol" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="1"><img src="gallery/gallery-02.webp" alt="Gaby y Katty besándose" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="2"><img src="gallery/gallery-03.webp" alt="Gaby y Katty riendo juntos" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="3"><img src="gallery/gallery-04.webp" alt="Retrato de Gaby y Katty" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="4"><img src="gallery/gallery-05.webp" alt="Gaby y Katty junto a un árbol" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="5"><img src="gallery/gallery-06.webp" alt="Gaby y Katty abrazados" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="6"><img src="gallery/gallery-07.webp" alt="Gaby y Katty con luz entre los árboles" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="7"><img src="gallery/gallery-08.webp" alt="Gaby y Katty besándose en blanco y negro" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="8"><img src="gallery/gallery-09.webp" alt="Gaby y Katty entre los árboles" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="9"><img src="gallery/gallery-10.webp" alt="Gaby y Katty mirándose" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="10"><img src="gallery/gallery-11.webp" alt="Gaby y Katty tomados de la mano" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="11"><img src="gallery/gallery-12.webp" alt="Gaby y Katty besándose" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="12"><img src="gallery/gallery-13.webp" alt="Gaby y Katty frente a las montañas" loading="lazy" /></button>
+        </div>
+      </section>
+
       <section class="panel" aria-label="Música">
         <img src="7.webp" alt="Música: ayudanos a armar la playlist" />
       </section>
@@ -55,6 +78,12 @@
         <img src="9.webp" alt="Información adicional de la boda" />
       </section>
     </main>
+    <dialog class="lightbox" aria-label="Galería de fotos">
+      <button class="lightbox__close" type="button" aria-label="Cerrar galería">×</button>
+      <button class="lightbox__nav lightbox__nav--previous" type="button" aria-label="Foto anterior">‹</button>
+      <img class="lightbox__image" alt="" />
+      <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Foto siguiente">›</button>
+    </dialog>
     <script src="script.js"></script>
   </body>
 </html>

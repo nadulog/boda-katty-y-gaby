@@ -14,4 +14,25 @@ body { margin: 0; min-width: 320px; background: #efe4cd; color: #26310e; font-fa
 .hotspot:focus-visible { outline: 3px solid #fff; }
 .calendar-link { left: 17%; top: 76.1%; width: 66%; height: 6.3%; }
 .location-link { left: 19%; top: 77.1%; width: 62%; height: 6.5%; }
+.gallery { padding: clamp(36px, 8vw, 64px) clamp(14px, 3vw, 28px) clamp(42px, 9vw, 72px); background: linear-gradient(180deg, #f3e5ce 0%, #e9d7b8 100%); }
+.gallery__heading { margin: 0 auto clamp(22px, 5vw, 38px); text-align: center; color: #28320d; }
+.gallery__heading span { display: block; margin-bottom: 5px; font-size: clamp(.7rem, 2.5vw, .95rem); letter-spacing: .25em; text-transform: uppercase; }
+.gallery__heading h2 { margin: 0; font-size: clamp(2rem, 8vw, 4rem); font-weight: 500; line-height: 1; }
+.gallery__heading p { margin: 12px 0 0; font-size: clamp(.92rem, 3.5vw, 1.2rem); font-style: italic; line-height: 1.4; }
+.gallery__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(8px, 2.2vw, 18px); }
+.gallery__item { display: block; aspect-ratio: 3 / 4; min-width: 0; overflow: hidden; padding: 0; border: 0; border-radius: 3px; background: #cdb991; box-shadow: 0 7px 18px rgb(75 52 21 / 22%); cursor: zoom-in; }
+.gallery__item--wide { grid-column: span 2; aspect-ratio: 16 / 10; }
+.gallery__item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+.gallery__item:hover img, .gallery__item:focus-visible img { transform: scale(1.035); }
+.gallery__item:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.lightbox { width: min(100vw, 1000px); height: 100dvh; margin: 0; padding: 18px; border: 0; background: rgb(13 17 8 / 96%); color: #fff; }
+.lightbox::backdrop { background: rgb(13 17 8 / 84%); }
+.lightbox[open] { display: grid; place-items: center; }
+.lightbox__image { max-width: 100%; max-height: calc(100dvh - 36px); object-fit: contain; }
+.lightbox__close, .lightbox__nav { position: absolute; z-index: 1; display: grid; place-items: center; border: 0; border-radius: 50%; color: #fff; background: rgb(0 0 0 / 42%); cursor: pointer; }
+.lightbox__close { top: 16px; right: 16px; width: 42px; height: 42px; font-size: 2rem; line-height: 1; }
+.lightbox__nav { top: 50%; width: 44px; height: 56px; font-size: 3rem; transform: translateY(-50%); }
+.lightbox__nav--previous { left: 10px; }
+.lightbox__nav--next { right: 10px; }
+.lightbox__close:focus-visible, .lightbox__nav:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 @media (max-width: 420px) { .invitation { box-shadow: none; } .guest-name { inset: 32.4% 12% auto; } }
