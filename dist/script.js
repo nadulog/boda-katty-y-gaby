@@ -18,8 +18,6 @@ function updateCountdown() {
   });
 }
 
-const guest = new URLSearchParams(window.location.search).get('invitado');
-if (guest) document.getElementById('guest-name').textContent = guest;
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
@@ -52,3 +50,115 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowLeft') showGalleryImage(activeGalleryIndex - 1);
   if (event.key === 'ArrowRight') showGalleryImage(activeGalleryIndex + 1);
 });
+
+const bankDialog = document.querySelector('.bank-dialog');
+const bankToast = document.querySelector('.bank-toast');
+let bankToastTimer;
+
+document.querySelector('.bank-open').addEventListener('click', () => bankDialog.showModal());
+document.querySelector('.bank-close').addEventListener('click', () => bankDialog.close());
+bankDialog.addEventListener('click', (event) => { if (event.target === bankDialog) bankDialog.close(); });
+
+function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+  const field = document.createElement('textarea');
+  field.value = text;
+  field.setAttribute('readonly', '');
+  field.style.position = 'fixed';
+  field.style.opacity = '0';
+  bankDialog.append(field);
+  field.select();
+  document.execCommand('copy');
+  field.remove();
+  return Promise.resolve();
+}
+
+document.querySelectorAll('.bank-copy').forEach((button) => {
+  button.addEventListener('click', () => {
+    copyText(button.dataset.alias).then(() => {
+      bankToast.textContent = `Alias copiado: ${button.dataset.alias}`;
+    }).catch(() => {
+      bankToast.textContent = `Alias: ${button.dataset.alias}`;
+    });
+    bankToast.classList.add('is-visible');
+    clearTimeout(bankToastTimer);
+    bankToastTimer = setTimeout(() => bankToast.classList.remove('is-visible'), 2200);
+  });
+});
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const audioToggle = document.querySelector('#audioToggle');
+const invitationAudio = document.querySelector('#invitationAudio');
+let audioFadeFrame = 0;
+
+function syncAudioControl(isPlaying) {
+  audioToggle.classList.toggle('is-playing', isPlaying);
+  audioToggle.setAttribute('aria-pressed', String(isPlaying));
+  audioToggle.setAttribute('aria-label', isPlaying ? 'Pausar música' : 'Reproducir música');
+}
+
+function fadeAudioTo(targetVolume = 0.6, duration = 1600) {
+  cancelAnimationFrame(audioFadeFrame);
+  const startedAt = performance.now();
+  const startingVolume = invitationAudio.volume;
+  function step(now) {
+    const progress = Math.min(1, (now - startedAt) / duration);
+    invitationAudio.volume = startingVolume + (targetVolume - startingVolume) * (1 - Math.pow(1 - progress, 3));
+    if (progress < 1) audioFadeFrame = requestAnimationFrame(step);
+  }
+  audioFadeFrame = requestAnimationFrame(step);
+}
+
+async function startInvitationAudio() {
+  cancelAnimationFrame(audioFadeFrame);
+  invitationAudio.volume = 0.05;
+  try {
+    await invitationAudio.play();
+    fadeAudioTo();
+  } catch {
+    syncAudioControl(false);
+  }
+}
+
+// El botón solo aparece si el archivo de música existe (en iPhone el audio no se
+// precarga hasta que se toca la pantalla, por eso se consulta el archivo directamente).
+fetch(invitationAudio.src, { method: 'HEAD' })
+  .then((response) => { if (response.ok) audioToggle.hidden = false; })
+  .catch(() => {});
+
+audioToggle.addEventListener('click', () => {
+  if (invitationAudio.paused) {
+    startInvitationAudio();
+  } else {
+    cancelAnimationFrame(audioFadeFrame);
+    invitationAudio.pause();
+  }
+});
+invitationAudio.addEventListener('play', () => syncAudioControl(true));
+invitationAudio.addEventListener('pause', () => syncAudioControl(false));
+
+/* Intro: entrar con o sin música. */
+(function setupInvitationIntro() {
+  const intro = document.querySelector('.invitation-intro');
+  const main = document.querySelector('#invitationMain');
+  if (!intro) return;
+  let leaving = false;
+
+  const enter = (withMusic) => {
+    if (leaving) return;
+    leaving = true;
+    intro.querySelectorAll('button').forEach((button) => { button.disabled = true; });
+    // Se llama dentro del toque para que los celulares permitan reproducir.
+    if (withMusic) startInvitationAudio();
+    intro.classList.add('is-leaving');
+    setTimeout(() => {
+      document.body.classList.remove('intro-is-open');
+      intro.remove();
+      window.scrollTo(0, 0);
+      main?.focus({ preventScroll: true });
+    }, reducedMotion ? 260 : 900);
+  };
+
+  intro.querySelector('#introWithMusic')?.addEventListener('click', () => enter(true));
+  intro.querySelector('#introWithoutMusic')?.addEventListener('click', () => enter(false));
+})();

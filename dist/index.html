@@ -6,21 +6,53 @@
     <meta name="theme-color" content="#4b561c" />
     <meta name="description" content="Invitación de boda de Gaby y Katty — 12 de diciembre de 2026." />
     <title>Gaby & Katty · Nuestra boda</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://boda-katty-y-gaby.netlify.app/" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Gaby & Katty · Nuestra boda" />
+    <meta property="og:title" content="Gaby & Katty · Nuestra boda" />
+    <meta property="og:description" content="Te invitamos a celebrar nuestra boda el 12 de diciembre de 2026." />
+    <meta property="og:image" content="https://boda-katty-y-gaby.netlify.app/whatsapp.jpg" />
+    <meta property="og:image:secure_url" content="https://boda-katty-y-gaby.netlify.app/whatsapp.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nuestra boda: Gaby & Katty, 12 de diciembre de 2026" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gaby & Katty · Nuestra boda" />
+    <meta name="twitter:image" content="https://boda-katty-y-gaby.netlify.app/whatsapp.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" />
+    <link rel="preload" as="image" href="intro.webp" fetchpriority="high" />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <main class="invitation" aria-label="Invitación de boda de Gaby y Katty">
+  <body class="intro-is-open">
+    <div class="invitation-intro" role="dialog" aria-modal="true" aria-label="Bienvenida a la boda de Gaby y Katty">
+      <div class="invitation-intro__stage">
+        <img class="invitation-intro__image" src="intro.webp" alt="Nuestra boda: Gaby &amp; Katty, 12 de diciembre de 2026. ¿Cómo querés entrar?" width="1080" height="1920" />
+        <button id="introWithMusic" class="intro-action intro-action--music" type="button" aria-label="Entrar con música"></button>
+        <button id="introWithoutMusic" class="intro-action intro-action--silent" type="button" aria-label="Entrar sin música"></button>
+      </div>
+    </div>
+
+    <main id="invitationMain" class="invitation" tabindex="-1" aria-label="Invitación de boda de Gaby y Katty">
       <section class="panel cover" aria-label="Portada">
         <img src="1.webp" alt="Nuestra boda: Gaby y Katty, 12 de diciembre de 2026" />
       </section>
 
       <section class="panel guest-panel" aria-label="Invitación para invitados">
-        <img src="2.webp" alt="Esta invitación fue creada especialmente para nuestros invitados" />
-        <p id="guest-name" class="guest-name" aria-live="polite"></p>
+        <img id="imagen-invitados" src="invitados.webp" alt="Esta invitación fue creada especialmente para nuestros invitados. Tenés lugares reservados." />
+        <p id="nombres-invitados" class="guest-name" aria-live="polite"></p>
+        <span id="cantidad-lugares" class="guest-places" aria-live="polite"></span>
+      </section>
+
+      <section class="panel" aria-label="Frase">
+        <img src="frase.webp" alt="Así que ya no son dos, sino uno solo. Por tanto, lo que Dios ha unido, que no lo separe el hombre." loading="lazy" />
       </section>
 
       <section class="panel countdown-panel" aria-label="Cuenta regresiva">
-        <img src="3.webp" alt="Cuenta regresiva para la boda" />
+        <img src="cuenta-regresiva-v2.webp" alt="Cuenta regresiva para la boda" />
         <div class="countdown" aria-live="polite" aria-label="Tiempo restante hasta la boda">
           <span><b id="days">00</b><small>días</small></span>
           <span><b id="hours">00</b><small>horas</small></span>
@@ -39,8 +71,13 @@
         <a class="hotspot location-link" href="https://www.google.com/maps/search/?api=1&amp;query=Complejo%20La%20Masia" target="_blank" rel="noopener" aria-label="Ver ubicación de Complejo La Masia en Google Maps"></a>
       </section>
 
-      <section class="panel" aria-label="Información adicional">
-        <img src="6.webp" alt="Información adicional de la boda" />
+      <section class="panel" aria-label="Dress code">
+        <img src="6.webp" alt="Dress code: elegante formal" />
+      </section>
+
+      <section class="panel" aria-label="Regalos">
+        <img src="regalos.webp" alt="Regalos: si estás pensando en el regalo, no te preocupes por la envoltura. Te dejamos nuestras cuentas bancarias." loading="lazy" />
+        <button class="hotspot bank-open" type="button" aria-label="Ver datos bancarios"></button>
       </section>
 
       <section class="gallery" aria-labelledby="gallery-title">
@@ -53,37 +90,67 @@
           <button class="gallery__item" type="button" data-gallery-index="0"><img src="gallery/gallery-01.webp" alt="Gaby y Katty junto a un árbol" /></button>
           <button class="gallery__item" type="button" data-gallery-index="1"><img src="gallery/gallery-02.webp" alt="Gaby y Katty besándose" loading="lazy" /></button>
           <button class="gallery__item" type="button" data-gallery-index="2"><img src="gallery/gallery-03.webp" alt="Gaby y Katty riendo juntos" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="3"><img src="gallery/gallery-04.webp" alt="Retrato de Gaby y Katty" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="4"><img src="gallery/gallery-05.webp" alt="Gaby y Katty junto a un árbol" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="5"><img src="gallery/gallery-06.webp" alt="Gaby y Katty abrazados" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="6"><img src="gallery/gallery-07.webp" alt="Gaby y Katty con luz entre los árboles" loading="lazy" /></button>
-          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="7"><img src="gallery/gallery-08.webp" alt="Gaby y Katty besándose en blanco y negro" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="8"><img src="gallery/gallery-09.webp" alt="Gaby y Katty entre los árboles" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="9"><img src="gallery/gallery-10.webp" alt="Gaby y Katty mirándose" loading="lazy" /></button>
-          <button class="gallery__item" type="button" data-gallery-index="10"><img src="gallery/gallery-11.webp" alt="Gaby y Katty tomados de la mano" loading="lazy" /></button>
-          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="11"><img src="gallery/gallery-12.webp" alt="Gaby y Katty besándose" loading="lazy" /></button>
-          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="12"><img src="gallery/gallery-13.webp" alt="Gaby y Katty frente a las montañas" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="3"><img src="gallery/gallery-05.webp" alt="Gaby y Katty junto a un árbol" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="4"><img src="gallery/gallery-06.webp" alt="Gaby y Katty abrazados" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="5"><img src="gallery/gallery-07.webp" alt="Gaby y Katty con luz entre los árboles" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="6"><img src="gallery/gallery-08.webp" alt="Gaby y Katty besándose en blanco y negro" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="7"><img src="gallery/gallery-09.webp" alt="Gaby y Katty entre los árboles" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="8"><img src="gallery/gallery-10.webp" alt="Gaby y Katty mirándose" loading="lazy" /></button>
+          <button class="gallery__item" type="button" data-gallery-index="9"><img src="gallery/gallery-11.webp" alt="Gaby y Katty tomados de la mano" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="10"><img src="gallery/gallery-12.webp" alt="Gaby y Katty besándose" loading="lazy" /></button>
+          <button class="gallery__item gallery__item--wide" type="button" data-gallery-index="11"><img src="gallery/gallery-13.webp" alt="Gaby y Katty frente a las montañas" loading="lazy" /></button>
         </div>
       </section>
 
       <section class="panel" aria-label="Música">
         <img src="7.webp" alt="Música: ayudanos a armar la playlist" />
+        <div class="vinyl-spin" aria-hidden="true"><span></span></div>
+        <a class="hotspot music-link" href="https://open.spotify.com/playlist/7xXVHrYVyhVX35pVH0gcE7" target="_blank" rel="noopener" aria-label="Agregar canción a la playlist en Spotify"></a>
       </section>
 
-      <section class="panel" aria-label="Información adicional">
-        <img src="8.webp" alt="Información adicional de la boda" />
+      <section class="panel" aria-label="Compartir fotos">
+        <img src="bloomkeep.webp" alt="Bloomkeep: guardemos este día para siempre. Compartí tus fotos de la boda" />
+        <a class="hotspot photos-link" href="https://app.bloomkeep.site/boda-katy-gaby" target="_blank" rel="noopener" aria-label="Compartir fotos en Bloomkeep"></a>
       </section>
 
-      <section class="panel" aria-label="Información adicional">
-        <img src="9.webp" alt="Información adicional de la boda" />
+      <section class="panel" aria-label="Solo adultos">
+        <img src="ninos.webp" alt="Aunque amamos a sus hijos, hemos decidido celebrar nuestra boda solo entre adultos" loading="lazy" />
       </section>
+
+      <section class="panel" aria-label="Confirmación de asistencia">
+        <img src="confirmacion.webp" alt="Confirmación de asistencia: agradecemos confirmar tu asistencia antes del 20 de noviembre de 2026" />
+        <a id="boton-confirmar" class="hotspot rsvp-link" aria-label="Confirmar asistencia"></a>
+      </section>
+
+      <footer class="panel panel--footer" aria-label="BloomDate y redes sociales">
+        <img src="footer-bloomdate-v2.webp" alt="Hecho con amor por BloomDate. WhatsApp, Instagram y sitio web. Todos los derechos reservados." loading="lazy" />
+        <a class="footer-link footer-link--whatsapp" href="https://wa.me/541140436324" target="_blank" rel="noopener" aria-label="Escribir a BloomDate por WhatsApp"></a>
+        <a class="footer-link footer-link--instagram" href="https://www.instagram.com/bloomdate.invitaciones/" target="_blank" rel="noopener" aria-label="Instagram de BloomDate"></a>
+        <a class="footer-link footer-link--website" href="https://bloomdate-site.netlify.app/" target="_blank" rel="noopener" aria-label="Sitio web de BloomDate"></a>
+      </footer>
     </main>
+    <dialog class="bank-dialog" aria-label="Datos bancarios">
+      <div class="bank-card">
+        <img src="datos-bancarios.webp" alt="Datos bancarios. Mercado Pago, alias gabyla12, titular Juan Gabriel Vera. Mercado Pago, alias Katy.benja.lagos, titular Katya Joseline Lagos. Prex, alias GabyKaty.PREX, titular Katya Joseline Lagos." />
+        <button class="hotspot bank-close" type="button" aria-label="Cerrar datos bancarios"></button>
+        <button class="hotspot bank-copy bank-copy--1" type="button" data-alias="gabyla12" aria-label="Copiar alias gabyla12"></button>
+        <button class="hotspot bank-copy bank-copy--2" type="button" data-alias="Katy.benja.lagos" aria-label="Copiar alias Katy.benja.lagos"></button>
+        <button class="hotspot bank-copy bank-copy--3" type="button" data-alias="GabyKaty.PREX" aria-label="Copiar alias GabyKaty.PREX"></button>
+        <p class="bank-toast" role="status" aria-live="polite"></p>
+      </div>
+    </dialog>
     <dialog class="lightbox" aria-label="Galería de fotos">
       <button class="lightbox__close" type="button" aria-label="Cerrar galería">×</button>
       <button class="lightbox__nav lightbox__nav--previous" type="button" aria-label="Foto anterior">‹</button>
       <img class="lightbox__image" alt="" />
       <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Foto siguiente">›</button>
     </dialog>
+    <button id="audioToggle" class="audio-toggle" type="button" aria-label="Reproducir música" aria-pressed="false" hidden>
+      <span class="audio-toggle__note" aria-hidden="true">♫</span>
+      <span class="audio-toggle__state" aria-hidden="true"></span>
+    </button>
+    <audio id="invitationAudio" src="musica.mp3" loop preload="metadata"></audio>
     <script src="script.js"></script>
+    <script src="invitation-personalization.js"></script>
   </body>
 </html>
